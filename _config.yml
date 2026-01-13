@@ -115,8 +115,8 @@ analytics:
 author:
   name             : "YSPARK"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "I am an **amazing** person."
-  location         : "Somewhere"
+  bio              : "아자스!"
+  location         : "Busan, South Korea"
   email            :
   links:
     - label: "Email"
@@ -312,7 +312,6 @@ compress_html:
 
 # Defaults
 defaults:
-  # _posts
   - scope:
       path: ""
       type: posts
@@ -320,6 +319,16 @@ defaults:
       layout: single
       author_profile: true
       read_time: true
-      comments: # true
+      comments: false
       share: true
       related: true
+      sidebar:
+        nav: "categories"
+  - scope:
+      path: "_pages"
+      type: pages
+    values:
+      layout: single
+      author_profile: true
+      sidebar:
+        nav: "categories"

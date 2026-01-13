@@ -2,11 +2,16 @@
 main:
   - title: "GitHub"
     url: https://github.com/kitewatermelon
-  # - title: "About"
-  #   url: https://mmistakes.github.io/minimal-mistakes/about/
-  # - title: "Sample Posts"
-  #   url: /year-archive/
-  # - title: "Sample Collections"
-  #   url: /collection-archive/
-  # - title: "Sitemap"
-  #   url: /sitemap/
+  - title: "Categories"
+    url: /categories/
+
+categories:
+  - title: "📂 전체 게시글"
+    url: /categories/
+  - title: "📝 논문리뷰"
+    url: /categories/논문리뷰/
+    children:
+      - title: "Computer Vision"
+        url: /categories/cv/
+      - title: "Medical AI"
+        url: /categories/mai/
