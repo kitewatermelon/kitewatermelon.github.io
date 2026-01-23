@@ -77,14 +77,14 @@ fine-tune
 참고: 앞으로 별 언급이 없는 한 75%의 마스킹 비율로 모든 데이터셋에서 pre-train한 실험에 관한 내용이다.
 
 ### pre-training findings
-1. pre-training은 정확도를 높혀준다.   
+- pre-training은 정확도를 높혀준다.   
 아래 표는 from scratch에서 학습한 결과와 MAE로 fine-tune한 결과를 비교하는 표다. 전반적으로 fine-tune한 결과가 정확도가 높았으며, 75%의 마스킹 비율로 pre-train을 했을때 성능이 가장 좋았다. 이는 선행 연구와 일치하는 결과이다. 그럼에도 저자들은 AD나 치매와 관련없는 데이터셋으로 학습을 했기 때문에 이 부분을 강조한다. 
 <center>
 <img src="{{ 'assets/img/ViT-recipe-for-AD/tab1.webp' | relative_url }}" width="80%">
 </center>
 <br>
 
-2. Pre-training data size는 중요하며 서로 다른 데이터셋을 결합하는 것이 효과적이다.    
+- Pre-training data size는 중요하며 서로 다른 데이터셋을 결합하는 것이 효과적이다.    
 <center>
 <img src="{{ 'assets/img/ViT-recipe-for-AD/fig2.webp' | relative_url }}" width="80%">
 </center>
@@ -92,7 +92,7 @@ fine-tune
 
 위 그림에서 볼 수 있듯이 서로 다른 데이터셋을 결합하여 많은 양으로 pre-train 했을때 성능이 좋았다. 이로 인해 많은 양의 데이터와 서로 성질이 다른 데이터셋을 결합하는 것이 정확도를 높이는 데에 있어 중요하며 여러 augmentation을 통해 성능을 높일 수 있을 것이라고 저자들은 예측한다.
 
-3. Pre-training은 극도로 적은 labeled dataset으로도 성공적인 학습을 할 수 있게 한다.
+- Pre-training은 극도로 적은 labeled dataset으로도 성공적인 학습을 할 수 있게 한다.
 <center>
 <img src="{{ 'assets/img/ViT-recipe-for-AD/fig3.webp' | relative_url }}" width="80%">
 </center>
