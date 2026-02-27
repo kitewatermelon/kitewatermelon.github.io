@@ -4,7 +4,7 @@ last_modified_at: 2026-02-09
 layout: single
 categories:
   - 논문리뷰
-  - Medical AI
+  - Medical-AI
   - Dataset
 tags:
   - Dataset
