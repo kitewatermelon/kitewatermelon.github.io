@@ -1,5 +1,5 @@
 ---
-title: "Contrastive Loss 코드 리뷰"
+title: "[코드 리뷰] Contrastive Loss - InfoNCE(NT-Xent)"
 last_modified_at: 2026-03-03
 layout: single
 categories:
@@ -7,7 +7,7 @@ categories:
   - contrastive-learning
 tags:
   - code
-- contrastive-learning
+  - contrastive-learning
 excerpt: "Contrastive Loss 코드 리뷰"
 use_math: true
 classes: wide

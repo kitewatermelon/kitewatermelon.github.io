@@ -1,5 +1,5 @@
 ---
-title: "Entropy, Cross Entropy, KL Divergence"
+title: "[코드리뷰] Entropy, Cross Entropy, KL Divergence"
 last_modified_at: 2026-02-18
 layout: single
 categories:
