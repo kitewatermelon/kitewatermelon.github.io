@@ -3,8 +3,8 @@ title: "Entropy, Cross Entropy, KL Divergence"
 last_modified_at: 2026-02-18
 layout: single
 categories:
-  - 코드 리뷰
-  - 정보 이론
+  - 코드리뷰
+  - 정보이론
 tags:
   - code
 excerpt: "Entropy, Cross Entropy, KL Divergence"

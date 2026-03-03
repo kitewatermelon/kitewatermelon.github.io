@@ -1,8 +1,8 @@
 ---
-title: "Computer Vision"
+title: "Computer-Vision"
 layout: category
 permalink: /categories/cv/
-taxonomy: Computer Vision
+taxonomy: Computer-Vision
 author_profile: true
 sidebar:
   nav: "categories"
