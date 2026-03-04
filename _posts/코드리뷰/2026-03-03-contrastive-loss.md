@@ -4,10 +4,10 @@ last_modified_at: 2026-03-03
 layout: single
 categories:
   - 코드리뷰
-  - contrastive-learning
+  - Contrastive-Learning
 tags:
   - code
-  - contrastive-learning
+  - Contrastive-Learning
 excerpt: "Contrastive Loss 코드 리뷰"
 use_math: true
 classes: wide
@@ -19,15 +19,15 @@ code 다운로드: [📥 contrastive-loss.ipynb 다운로드](/assets/code/contr
 
 "같은 것은 가까이, 다른 것은 멀리" 라는 아이디어에서 시작된 Contrastive learning은 Deep learning 분야에서 많이 각광 받아온 학습 방법이다.
 
-Self-supervised learning 분야에서 주로 사용되며 2010년 말 빅테크기업에서 압도적인 연산력을 토대로 만들어낸 MoCo, [SimCLR](_posts/논문리뷰/2026-01-15-simclr.md) 같은 모델이 대표적인 예시이며, Multi-modal 학습 방법인 OpenAI의 CLIP의 C도 Contrastive이다.
+Self-supervised learning 분야에서 주로 사용되며 2010년 말 빅테크기업에서 압도적인 연산력을 토대로 만들어낸 MoCo, [SimCLR](https://kitewatermelon.github.io/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/computer-vision/simclr/) 같은 모델이 대표적인 예시이며, Multi-modal 학습 방법인 OpenAI의 CLIP의 C도 Contrastive이다.
 
-Contrastive Loss는 여러가지가 있지만, 본 게시글에서는 [SimCLR](_posts/논문리뷰/2026-01-15-simclr.md) 논문에서 사용된 가장 많이 사용되는 Loss 중 하나인 InfoNCE 계열의 NT-Xent loss를 구현하고 코드 리뷰를 할 것이다.
+Contrastive Loss는 여러가지가 있지만, 본 게시글에서는 [SimCLR](https://kitewatermelon.github.io/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/computer-vision/simclr/) 논문에서 사용된 가장 많이 사용되는 Loss 중 하나인 InfoNCE 계열의 NT-Xent loss를 구현하고 코드 리뷰를 할 것이다.
 
 Contrastive Loss에 대해 입문하거나 관심이 있다면 [Understanding Contrastive Representation Learning through Alignment and Uniformity on the Hypersphere](https://proceedings.mlr.press/v119/wang20k/wang20k.pdf)를 한번 읽어보는 것을 추천한다.
 
 ### 2. Preliminary
 
-[SimCLR](_posts/논문리뷰/2026-01-15-simclr.md)은 2020년 구글에서 발표한 self-supervised learning 논문으로 한 sample에 두개의 augmented view를 만들어서 같은 이미지끼리는 큰 cosine similarity를 가지게 하고 서로 다른 이미지 샘플끼리는 낮은 cosine similarity를 가지도록 하는 방식으로 학습한다.
+[SimCLR](https://kitewatermelon.github.io/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/computer-vision/simclr/)은 2020년 구글에서 발표한 self-supervised learning 논문으로 한 sample에 두개의 augmented view를 만들어서 같은 이미지끼리는 큰 cosine similarity를 가지게 하고 서로 다른 이미지 샘플끼리는 낮은 cosine similarity를 가지도록 하는 방식으로 학습한다.
 
 우선 수식부터 알아보자
 
@@ -47,7 +47,7 @@ $\tau$는 분포를 좀 더 뾰족하거나 완만하게 만들어준다.
 
 ### implementation
 
-[참고 코드](https://github.com/sthalles/[SimCLR](_posts/논문리뷰/2026-01-15-simclr.md)/blob/master/[simclr](_posts/논문리뷰/2026-01-15-simclr.md).py)에서 class 내의 함수를 꺼내서 사용할 수 있도록 아주 약간 수정했으며 핵심 메커니즘은 그대로임을 미리 알린다.
+[참고 코드](https://github.com/sthalles/SimCLR/blob/master/simclr.py)에서 class 내의 함수를 꺼내서 사용할 수 있도록 아주 약간 수정했으며 핵심 메커니즘은 그대로임을 미리 알린다.
 
 
 ```python
@@ -219,7 +219,7 @@ print(f"High Loss: {loss_high:.4f}")
     High Loss: 20.0002
 
 
-Collapse란 model이 입력과 무관하게 상수의 값을 내뱉는 상황이다. Collapse가 일어나면 model의 representation이 저하된다. 따라서 InfoNCE는 큰 배치를 이용하여 분모를 키워 collapse penalty를 강하게 함으로써 collapse가 쉽게 일어나지 않도록 한다. 이것이 [SimCLR](_posts/논문리뷰/2026-01-15-simclr.md)이 대용량 배치(e.g. 4096)를 필요로 하는 이유이기도 하다.
+Collapse란 model이 입력과 무관하게 상수의 값을 내뱉는 상황이다. Collapse가 일어나면 model의 representation이 저하된다. 따라서 InfoNCE는 큰 배치를 이용하여 분모를 키워 collapse penalty를 강하게 함으로써 collapse가 쉽게 일어나지 않도록 한다. 이것이 [SimCLR](https://kitewatermelon.github.io/%EB%85%BC%EB%AC%B8%EB%A6%AC%EB%B7%B0/computer-vision/simclr/)이 대용량 배치(e.g. 4096)를 필요로 하는 이유이기도 하다.
 
 
 ```python
