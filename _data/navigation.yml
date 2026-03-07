@@ -1,17 +1,57 @@
-# main links
+# main links (상단 네비게이션)
 main:
-  - title: "GitHub"
-    url: https://github.com/kitewatermelon
+  - title: "Posts"
+    url: /posts/
   - title: "Categories"
     url: /categories/
+  - title: "Tags"
+    url: /tags/
+  - title: "GitHub"
+    url: https://github.com/kitewatermelon
 
+# sidebar navigation
 categories:
-  - title: "📂 전체 게시글"
-    url: /categories/
-  - title: "📝 논문리뷰"
-    url: /categories/논문리뷰/
+  - title: "All Posts"
+    url: /posts/
+  - title: "Categories"
     children:
-      - title: "Computer Vision"
-        url: /categories/cv/
-      - title: "Medical AI"
-        url: /categories/mai/
+      - title: "Paper Review"
+        url: /categories/paper-review/
+      - title: "Code Review"
+        url: /categories/code-review/
+      - title: "Study"
+        url: /categories/study/
+  - title: "Domain"
+    children:
+      - title: "Medical-AI"
+        url: /tags/medical-ai/
+      - title: "Computer-Vision"
+        url: /tags/computer-vision/
+  - title: "Method"
+    children:
+      - title: "Contrastive-Learning"
+        url: /tags/contrastive-learning/
+      - title: "Self-Supervised-Learning"
+        url: /tags/self-supervised-learning/
+      - title: "Foundation-Model"
+        url: /tags/foundation-model/
+      - title: "Wavelet"
+        url: /tags/wavelet/
+      - title: "Segmentation"
+        url: /tags/segmentation/
+      - title: "Information-Theory"
+        url: /tags/information-theory/
+      - title: "Dataset"
+        url: /tags/dataset/
+  - title: "Conference"
+    children:
+      - title: "MICCAI"
+        url: /tags/miccai/
+      - title: "ICLR"
+        url: /tags/iclr/
+      - title: "ICML"
+        url: /tags/icml/
+      - title: "NIPS"
+        url: /tags/nips/
+      - title: "ECCV"
+        url: /tags/eccv/

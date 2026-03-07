@@ -17,15 +17,15 @@ code 다운로드: [📥 contrastive-loss.ipynb 다운로드](/assets/code/code-
 
 "같은 것은 가까이, 다른 것은 멀리" 라는 아이디어에서 시작된 Contrastive learning은 Deep learning 분야에서 많이 각광 받아온 학습 방법이다.
 
-Self-supervised learning 분야에서 주로 사용되며 2010년 말 빅테크기업에서 압도적인 연산력을 토대로 만들어낸 MoCo, [SimCLR]({% post_url 2026-01-15-simclr %}) 같은 모델이 대표적인 예시이며, Multi-modal 학습 방법인 OpenAI의 CLIP의 C도 Contrastive이다.
+Self-supervised learning 분야에서 주로 사용되며 2010년 말 빅테크기업에서 압도적인 연산력을 토대로 만들어낸 MoCo, [SimCLR]({% post_url paper-review/2026-01-15-simclr %}) 같은 모델이 대표적인 예시이며, Multi-modal 학습 방법인 OpenAI의 CLIP의 C도 Contrastive이다.
 
-Contrastive Loss는 여러가지가 있지만, 본 게시글에서는 [SimCLR]({% post_url 2026-01-15-simclr %}) 논문에서 사용된 가장 많이 사용되는 Loss 중 하나인 InfoNCE 계열의 NT-Xent loss를 구현하고 코드 리뷰를 할 것이다.
+Contrastive Loss는 여러가지가 있지만, 본 게시글에서는 [SimCLR]({% post_url paper-review/2026-01-15-simclr %}) 논문에서 사용된 가장 많이 사용되는 Loss 중 하나인 InfoNCE 계열의 NT-Xent loss를 구현하고 코드 리뷰를 할 것이다.
 
 Contrastive Loss에 대해 입문하거나 관심이 있다면 [Understanding Contrastive Representation Learning through Alignment and Uniformity on the Hypersphere](https://proceedings.mlr.press/v119/wang20k/wang20k.pdf)를 한번 읽어보는 것을 추천한다.
 
 ### 2. Preliminary
 
-[SimCLR]({% post_url 2026-01-15-simclr %})은 2020년 구글에서 발표한 self-supervised learning 논문으로 한 sample에 두개의 augmented view를 만들어서 같은 이미지끼리는 큰 cosine similarity를 가지게 하고 서로 다른 이미지 샘플끼리는 낮은 cosine similarity를 가지도록 하는 방식으로 학습한다.
+[SimCLR]({% post_url paper-review/2026-01-15-simclr %})은 2020년 구글에서 발표한 self-supervised learning 논문으로 한 sample에 두개의 augmented view를 만들어서 같은 이미지끼리는 큰 cosine similarity를 가지게 하고 서로 다른 이미지 샘플끼리는 낮은 cosine similarity를 가지도록 하는 방식으로 학습한다.
 
 우선 수식부터 알아보자
 
@@ -217,7 +217,7 @@ print(f"High Loss: {loss_high:.4f}")
     High Loss: 20.0002
 
 
-Collapse란 model이 입력과 무관하게 상수의 값을 내뱉는 상황이다. Collapse가 일어나면 model의 representation이 저하된다. 따라서 InfoNCE는 큰 배치를 이용하여 분모를 키워 collapse penalty를 강하게 함으로써 collapse가 쉽게 일어나지 않도록 한다. 이것이 [SimCLR]({% post_url 2026-01-15-simclr %})이 대용량 배치(e.g. 4096)를 필요로 하는 이유이기도 하다.
+Collapse란 model이 입력과 무관하게 상수의 값을 내뱉는 상황이다. Collapse가 일어나면 model의 representation이 저하된다. 따라서 InfoNCE는 큰 배치를 이용하여 분모를 키워 collapse penalty를 강하게 함으로써 collapse가 쉽게 일어나지 않도록 한다. 이것이 [SimCLR]({% post_url paper-review/2026-01-15-simclr %})이 대용량 배치(e.g. 4096)를 필요로 하는 이유이기도 하다.
 
 
 ```python
