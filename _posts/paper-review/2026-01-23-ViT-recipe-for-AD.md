@@ -3,11 +3,10 @@ title: "[논문리뷰] Training ViT with Limited Data for Alzheimer’s  Disease
 last_modified_at: 2026-01-23
 layout: single
 categories:
-  - 논문리뷰
-  - Medical-AI
+  - Paper-Review
 tags:
-  - Computer Vision
-  - Wavelet Convolution 
+  - Medical-AI
+  - Self-Supervised-Learning
   - MICCAI
 excerpt: "Training ViT with Limited Data for Alzheimer’s  Disease Classification: an Empirical Study (MICCAI 2024)"
 use_math: true
@@ -26,7 +25,7 @@ classes: wide
 본 논문은 Masked AutoEncoder를 기반으로 하기 때문에 Model은 Encoder와 Decoder로 나뉜다. 우선 아래 그림에서 보이듯이 Encoder는 ViT-B을 사용한다. 이때 MRI가 3D 영상이기 때문에 3D input을 처리하도록 입력단을 구성한다. 
 
 <center>
-<img src="{{ 'assets/img/ViT-recipe-for-AD/fig1.webp' | relative_url }}" width="80%">
+<img src="{{ '/assets/img/paper-review/vit-recipe-for-ad/fig1.webp' | relative_url }}" width="80%">
 </center>
 <br>
 pre-training 단계는 딥러닝 모델을 성공적으로 개발하기 위한 방법이며, ViT에 inductive bias를 제공하는 방법이다. 나아가 질병과 관련한 dataset은 low-data regime인 경우가 많기 때문에 사용 가능한 의료 영상을 활용하여 self-supervised pre-training을 하는 것이 중요하다고 저자들은 말한다. 따라서 저자들은 AD나 치매와 관련없는 public MRI 데이터를 MAE 방식으로 pre-train에 사용했다. (참고: MAE는 마스킹을 통해 시공간 적으로 효율적인 학습을 하며 decoder가 encoder보다 더 작아도 괜찮다.) 첫번째로 3D MRI 이미지를 겹치지 않게 잘라서 fixed 3D position embedding(PE)을 붙인다. 다음에는 임의로 마스크를 씌우고 lightweight decoder로 영상을 복원하도록 한다. 이는 MAE의 학습 방식을 따른다. decoder로는 16 head 8 layer 576(3D 고려한 수)짜리 ViT를 사용한다(36.9M 파라미터).
@@ -45,7 +44,7 @@ Hyperparameters ablation으로 dropout과 attention dropout, drop path로 regula
 MAE pre-trian용 dataset으로 서로 다르고 공개됐으며 서로 성질이 다른 BRATS 2023, IXI, OASIS-3의 T1 weighted MRI를 사용한다. BRATS와 IXI는 AD, 치매와 무관하며 OASIS-3는 인지 저하의 다양한 단계의 이미지를 포함하지만, HD-BET를 이용하여 normal case만 사용한다. Fine-tuning datasets으로는 ADNI1, ADNI2를 사용했다.
 모든 자세한 정보는 아래 표를 참고하면 된다.
 <center>
-<img src="{{ 'assets/img/ViT-recipe-for-AD/tab1.webp' | relative_url }}" width="80%">
+<img src="{{ '/assets/img/paper-review/vit-recipe-for-ad/tab1.webp' | relative_url }}" width="80%">
 </center>
 <br>
 
@@ -80,13 +79,13 @@ fine-tune
 - pre-training은 정확도를 높혀준다.   
 아래 표는 from scratch에서 학습한 결과와 MAE로 fine-tune한 결과를 비교하는 표다. 전반적으로 fine-tune한 결과가 정확도가 높았으며, 75%의 마스킹 비율로 pre-train을 했을때 성능이 가장 좋았다. 이는 선행 연구와 일치하는 결과이다. 그럼에도 저자들은 AD나 치매와 관련없는 데이터셋으로 학습을 했기 때문에 이 부분을 강조한다. 
 <center>
-<img src="{{ 'assets/img/ViT-recipe-for-AD/tab1.webp' | relative_url }}" width="80%">
+<img src="{{ '/assets/img/paper-review/vit-recipe-for-ad/tab1.webp' | relative_url }}" width="80%">
 </center>
 <br>
 
 - Pre-training data size는 중요하며 서로 다른 데이터셋을 결합하는 것이 효과적이다.    
 <center>
-<img src="{{ 'assets/img/ViT-recipe-for-AD/fig2.webp' | relative_url }}" width="80%">
+<img src="{{ '/assets/img/paper-review/vit-recipe-for-ad/fig2.webp' | relative_url }}" width="80%">
 </center>
 <br>
 
@@ -94,7 +93,7 @@ fine-tune
 
 - Pre-training은 극도로 적은 labeled dataset으로도 성공적인 학습을 할 수 있게 한다.
 <center>
-<img src="{{ 'assets/img/ViT-recipe-for-AD/fig3.webp' | relative_url }}" width="80%">
+<img src="{{ '/assets/img/paper-review/vit-recipe-for-ad/fig3.webp' | relative_url }}" width="80%">
 </center>
 <br>
 
@@ -106,7 +105,7 @@ fine-tune
 knowledge distillation도 0.1%의 성능 향상이 있었으나 teacher model을 학습하기 위해 소모되는 GPU 메모리를 생각해볼때 큰 의미는 찾기 어려웠다.
 
 <center>
-<img src="{{ 'assets/img/ViT-recipe-for-AD/tab3.webp' | relative_url }}" width="80%">
+<img src="{{ '/assets/img/paper-review/vit-recipe-for-ad/tab3.webp' | relative_url }}" width="80%">
 </center>
 <br>
 

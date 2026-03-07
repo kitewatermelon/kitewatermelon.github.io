@@ -3,10 +3,9 @@ title: "[코드리뷰] Entropy, Cross Entropy, KL Divergence"
 last_modified_at: 2026-02-18
 layout: single
 categories:
-  - 코드리뷰
-  - 정보이론
+  - Code-Review
 tags:
-  - code
+  - Information-Theory
 excerpt: "Entropy, Cross Entropy, KL Divergence"
 use_math: true
 classes: wide
@@ -17,7 +16,7 @@ classes: wide
 3. KL Divergence
 4. Mutual Information
 
-code 다운로드: [📥 information.ipynb 다운로드](/assets/code/information.ipynb)
+code 다운로드: [📥 information.ipynb 다운로드](/assets/code/code-review/information.ipynb)
 
 
 ### 1. Entropy
@@ -60,7 +59,7 @@ plt.show()
 
 
 <center>
-<img src="{{ '/assets/img/information/fig1.webp' | relative_url }}" width="80%">
+<img src="{{ '/assets/img/code-review/information/fig1.webp' | relative_url }}" width="80%">
 </center>
 <br>
     

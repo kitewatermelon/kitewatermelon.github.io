@@ -3,17 +3,15 @@ title: "[코드 리뷰] Contrastive Loss - InfoNCE(NT-Xent)"
 last_modified_at: 2026-03-03
 layout: single
 categories:
-  - 코드리뷰
-  - Contrastive-Learning
+  - Code-Review
 tags:
-  - code
   - Contrastive-Learning
 excerpt: "Contrastive Loss 코드 리뷰"
 use_math: true
 classes: wide
 ---
 
-code 다운로드: [📥 contrastive-loss.ipynb 다운로드](/assets/code/contrastive-loss.ipynb)
+code 다운로드: [📥 contrastive-loss.ipynb 다운로드](/assets/code/code-review/contrastive-loss.ipynb)
 
 ### 1. Introduction
 
@@ -280,6 +278,6 @@ plt.show()
 
     
 <center>
-<img src="{{ '/assets/img/contrastive-loss/fig1.webp' | relative_url }}" width="80%">
+<img src="{{ '/assets/img/code-review/contrastive-loss/fig1.webp' | relative_url }}" width="80%">
 </center>
 <br>
