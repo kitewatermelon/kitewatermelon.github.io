@@ -7,3 +7,8 @@ search: false
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
+
+code, pre {
+    font-family: 'Courier New', Courier, monospace !important;
+    font-style: normal !important;
+  } // 코드 전용 폰트
