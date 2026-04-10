@@ -1,6 +1,6 @@
 ---
 title: "[코드 리뷰] eval() vs no_grad() vs inference_mode()"
-last_modified_at: 2026-03-20
+last_modified_at: 2026-04-10
 layout: single
 categories:
   - Code-Review
@@ -13,13 +13,13 @@ classes: wide
 
 code 다운로드: [📥 eval-no_grad-inference_mode.ipynb 다운로드](assets/code/code-review/eval-no_grad-inference_mode.ipynb)
 
-딥러닝 코드를 보다보면 model.eval()과 with torch.no_grad()를 많이 보곤한다. 오늘은 이 두 함수의 역할에 대하여 알아본다.
+딥러닝 코드를 보다보면 model.eval(), with torch.no_grad() 그리고 with torch.inference_mode()를 많이 보곤한다. 오늘은 이 세 함수의 역할에 대하여 알아본다. 또한 with torch.inference_mode()가 왜 
 
 ## eval()
 nn.Dropout()과 nn.BatchNormNd() 클래스는 대표적으로 train과 eval일때 역할이 다른 함수이다.
 
 nn.Dropout의 [공식 문서](https://docs.pytorch.org/docs/stable/generated/torch.nn.Dropout.html)에 따르면
-- train 시 입력의 일부 요소를 0으로 바꾸고 $frac{1}{1-p}$로 나머지 값들을 scaling한다.
+- train 시 입력의 일부 요소를 0으로 바꾸고 $\frac{1}{1-p}$로 나머지 값들을 scaling한다.
 - eval 시에는 모든 입력을 그대로 사용한다.
 - 이 방법을 사용하면 eval()시에 스케일링을 따로 하지 않아도 되어 불필요한 오버헤드를 줄이는 데 도와준다.
 
