@@ -5,10 +5,13 @@ search: false
 
 @charset "utf-8";
 
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css");
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap");
+
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
 
 code, pre {
-    font-family: 'Courier New', Courier, monospace !important;
+    font-family: 'JetBrains Mono', 'Cascadia Code', 'Menlo', 'Consolas', monospace !important;
     font-style: normal !important;
   } // 코드 전용 폰트
